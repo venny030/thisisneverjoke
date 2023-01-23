@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'jost';
+  src: url('font/jost.ttf');
+}
+
+@font-face {
+  font-family: 'tossimogi';
+  src: url('font/toss.ttf');
+}
+
+@font-face {
+  font-family: 'jua';
+  src: url('font/jua.otf');
+}
+
+.brand {
+  font-size: 3.5vw !important;
+  font-family: 'jost';
+  color: black;
+  margin: 2vw;
+  margin-top: 2vw !important;
+}
+
+.imogi {
+font-family: 'tossimogi';
+}
+
+h1 {
+  font-size: 3vw;
+  font-family: 'jua';
+  margin-left: 3vw;
+}
+
+.kakao-fishing {
+  border-radius: 3%;
+  border: 2px dotted black;
+}
+
+.blocks {
+  margin-top: 10vw;
+}

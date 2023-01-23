@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>선물</title>
+  <style> .char, .word {
+    display: inline-block;
+ }
+  .splitting .char {
+    animation: slide-in 1s cubic-bezier(0.17, 0.84, 0.4, 1.49) both;
+    animation-delay: calc(30ms * var(--char-index));
+ }
+  [data-word="♬"] .char {
+    display: inline;
+ }
+ 
+  @keyframes slide-in {
+    0% {
+      transform: scale(2) rotate(60deg);
+      opacity: 0;
+   }
+ }
+  @keyframes bump-in {
+    0% {
+      transform: scale(0);
+      opacity: 0;
+   }
+ }
+  particule {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    box-shadow: 1px 1px 4px #eb6383;
+ }
+  </style>
+</head>
+<body>
+  <ins class="kakao_ad_area" style="display:none;"
+data-ad-unit = "DAN-lqMOU9tYaC6HTJWr"
+data-ad-width = "300"
+data-ad-height = "250"></ins>
+<script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+  <h1 style="text-align: center; margin-top: 5vw;">축하합니다! <br>당신은 낚이셨습니다</h1>
+  <img src="../fish.png" style="width: 60vw; height: 60vw; margin-left: 20vw; margin-top: 5vw;">
+  <div id="again" style="font-size: 3vw; text-align: center; border: dashed 1px black;" onclick="location.href='https://thisisneverjoke.netlify.app/kakaotalk-fishing'">화가 나신다면? 다른 친구들을 낚아보세요! (클릭)</div>
+  <div class="coffeepls" style="margin-top: 10vw;">
+  <div style="display: flex">
+  <div style="width: 20vw; margin-left: 15vw;">toss</div>
+  <div style="width: 20vw; margin-left: 15vw;">kakao</div>
+  <div style="width: 20vw; margin-left: 15vw;">naver</div>
+  </div>
+  <div style="display: flex;">
+  <div style="border-radius: 50%; width: 20vw; height: 20vw; margin-left: 10vw; margin-right: 10vw; background-color: #88C5FA;" onclick="location.href='/alarm/toss.html'"></div>
+  <div style="border-radius: 50%; width: 20vw; height: 20vw; margin-right: 10vw; background-color: #FFF9BE" onclick="location.href='/alarm/kakao.html'"></div>
+  <div style="border-radius: 50%; width: 20vw; height: 20vw; background-color: #E0FADF" onclick="location.href='/alarm/naver.html'"></div>
+</div>
+</div>
+  <div id="again" style="font-size: 3vw; text-align: center;">👆개발자를 돈쭐내고 싶으시다면? (클릭)👆</div>
+  <ins class="kakao_ad_area" style="display:none;"
+  data-ad-unit = "DAN-3lFpbmuJd6ThcNjr"
+  data-ad-width = "250"
+  data-ad-height = "250"></ins>
+  <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+  <script>
+    let particles = [];
+const colors = ["#eb6383","#fa9191","#ffe9c5","#b4f2e1"];
+function pop () {
+  for (let i = 0; i < 150; i++) {
+    const p = document.createElement('particule');
+    p.x = window.innerWidth * 0.5;
+    p.y = window.innerHeight + (Math.random() * window.innerHeight * 0.3);
+    p.vel = {
+      x: (Math.random() - 0.5) * 10,
+      y: Math.random() * -20 - 15
+    };
+    p.mass = Math.random() * 0.2 + 0.8;
+    particles.push(p);
+    p.style.transform = `translate(${p.x}px, ${p.y}px)`;
+    const size = Math.random() * 15 + 5;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.background = colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(p);
+  }
+}
+
+function render () {
+  for (let i = particles.length - 1; i--; i > -1) {
+    const p = particles[i];
+    p.style.transform = `translate3d(${p.x}px, ${p.y}px, 1px)`;
+    
+    p.x += p.vel.x;
+    p.y += p.vel.y;
+    
+    p.vel.y += (0.5 * p.mass);
+    if (p.y > (window.innerHeight * 2)) {
+      p.remove();
+      particles.splice(i, 1);
+    }
+  }
+  requestAnimationFrame(render);
+}
+pop();
+window.setTimeout(render, 700);
+window.addEventListener('click', pop);
+  </script>
+</body>
+</html>
